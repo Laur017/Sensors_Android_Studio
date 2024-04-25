@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:icon="@drawable/baseline_home_24"
+        android:id="@+id/home"/>
+    <item android:title="About"
+        android:icon="@drawable/baseline_sensors_24"
+        android:id="@+id/about"/>
+    <item android:title="Motion"
+        android:icon="@drawable/baseline_accessibility_24"
+        android:id="@+id/motion"/>
+    <item android:title="Position"
+        android:icon="@drawable/baseline_api_24"
+        android:id="@+id/position"/>
+    <item android:title="Environment"
+        android:icon="@drawable/baseline_ac_unit_24"
+        android:id="@+id/environment"/>
+</menu>
