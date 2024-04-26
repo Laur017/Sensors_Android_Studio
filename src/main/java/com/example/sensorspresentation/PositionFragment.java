@@ -3,6 +3,7 @@ package com.example.sensorspresentation;
 import static androidx.core.content.ContextCompat.getSystemService;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -17,6 +18,8 @@ import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class PositionFragment extends Fragment implements SensorEventListener {
@@ -25,6 +28,8 @@ public class PositionFragment extends Fragment implements SensorEventListener {
     private Sensor proximitySensor;
     private Boolean isProximitySensorAvailable;
     private Vibrator vibrator;
+    private FrameLayout frameLayout;
+    private ImageView imageView;
 
 
     @Override
@@ -37,9 +42,13 @@ public class PositionFragment extends Fragment implements SensorEventListener {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_position, container, false);
 
+        imageView = rootView.findViewById(R.id.imageView);
+        frameLayout = rootView.findViewById(R.id.positionLayout);
         textPosition = rootView.findViewById(R.id.textPosition);
         sensorManager = (SensorManager) requireContext().getSystemService(Context.SENSOR_SERVICE);
         vibrator = (Vibrator) requireContext().getSystemService(Context.VIBRATOR_SERVICE);
+        imageView.setVisibility(View.GONE);
+        textPosition.setText("Enough for today !");
 
         if(sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY) != null){
             proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
@@ -55,12 +64,19 @@ public class PositionFragment extends Fragment implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         textPosition.setText(event.values[0] + " cm");
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrator.vibrate(VibrationEffect.createOneShot(500,VibrationEffect.DEFAULT_AMPLITUDE));
-        } else {
-            vibrator.vibrate(500);
-        }
+//        if (event.values[0] == 0) {
+//            imageView.setVisibility(View.VISIBLE);
+//
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+//            } else {
+//                vibrator.vibrate(500);
+//            }
+//            frameLayout.setBackgroundColor(Color.WHITE);
+//        } else {
+//            imageView.setVisibility(View.GONE);
+//            frameLayout.setBackgroundColor(Color.parseColor("#A4C639"));
+//        }
     }
 
     @Override

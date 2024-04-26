@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green"
-    tools:context=".MotionFragment">
+    tools:context=".MotionFragment"
+    android:id="@+id/motionFrame">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -19,7 +20,7 @@
         android:id="@+id/x"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Motion"
+        android:text=""
         android:textSize="40dp"
         android:layout_gravity="center"
         android:textColor="@color/black"

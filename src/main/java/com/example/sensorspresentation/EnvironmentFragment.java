@@ -50,6 +50,7 @@ public class EnvironmentFragment extends Fragment implements SensorEventListener
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+
         textEnv.setText(event.values[0] + " °C");
     }
 
